@@ -1,0 +1,58 @@
+.sign-up-card {
+    width: 28rem;
+    height: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .mb-3 {
+    margin: auto;
+    width: 70%;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .sign-up-page {
+    background-color: rgb(235, 238, 240);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 120vh;
+  }
+  
+  p {
+    margin-top: 10%;
+    text-align: center;
+    font-size: 30px;
+  }
+  
+  .custom-button {
+    width: 315px;
+    text-align: center;
+    margin-left: 15%;
+    background-color: blueviolet;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+
+  .btn-facebook {
+    margin-left: 22%;
+    width: 255px;
+  }
+
+.btn-google-signup {
+  margin-left: 22%;
+  width: 255px;
+  background-color: #dd4b39;
+  border-color: #dd4b39;
+  color: #fff;
+}
+  
+  .password-input-container {
+    position: relative;
+  }
+
+  .welcome-sign-up {
+    font-size: 30px;
+  }
