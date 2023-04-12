@@ -61,7 +61,7 @@ const SignUp = ({ setUserOnOff, setExternalUserOnOff }) => {
       setPasswordMessage('');
   
       const checkIfUsernameExists = async (username) => {
-        const querySnapshot = await getDocs(usersCollectionRef.where('userName', '==', username));
+        const querySnapshot = await getDocs(query(collection(db, 'users'), where('userName', '==', username)));
         if (querySnapshot.empty) {
           console.log('No documents found!');
           return false;
