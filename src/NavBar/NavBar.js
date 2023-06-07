@@ -7,12 +7,16 @@ const NavBar = ({ userOnOff, setUserOnOff, externalUserOnOff, setExternalUserOnO
 
   return (
     <div>
-      <Navbar bg="light" variant="light">
-        <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link> 
+      <Navbar className="navbar">
+        <Container >
+          <Navbar.Brand style={{fontSize: '40px', marginRight: '13%', color: '#7EFF85 '}} className="nav-link" >Wellness</Navbar.Brand>
+          <Nav  className="me-auto">
+            <Nav.Link className="nav-link" as={Link} to="/home">Home</Nav.Link>
+            <Nav.Link className="nav-link" as={Link} to="/mealplan">Meal Plans</Nav.Link> 
+            <Nav.Link className="nav-link" >Workouts</Nav.Link> 
+            <Nav.Link className="nav-link" >Articles</Nav.Link> 
+            <Nav.Link className="nav-link" >Recommendations and Reviews</Nav.Link> 
+
           </Nav>
           {userOnOff || externalUserOnOff ?
             <UserDropDownMenu userOnOff={userOnOff} setUserOnOff={setUserOnOff} 

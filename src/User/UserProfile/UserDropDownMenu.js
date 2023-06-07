@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { NavDropdown } from "react-bootstrap";
-import { collection, getFirestore, getDocs } from "firebase/firestore";
+import { collection, getFirestore, getDocs, query, where } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { app } from "../../FireBase/FireBase";
 import SignOut from "./SignOut";
 import { NavLink } from 'react-router-dom';
 import './UserDropDownMenu.css';
 import ProfilePic from "./ProfilePic";
+const db = getFirestore(app);
 
 const UserDropDownMenu = ({ userOnOff, setUserOnOff, setExternalUserOnOff, externalUserOnOff }) => {
   const [currentUserName, setCurrentUserName] = useState("");
@@ -16,18 +17,21 @@ const UserDropDownMenu = ({ userOnOff, setUserOnOff, setExternalUserOnOff, exter
     if (userOnOff) {
       const auth = getAuth(app);
       const currentUser = auth.currentUser;
-      if (currentUser) {
-        setCurrentUserEmail(currentUser.email);
-        const postCollectionRef = collection(getFirestore(app), "users");
-        getDocs(postCollectionRef).then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            if (data.currentUserEmail === currentUser.email) {
-              setCurrentUserName(data.userName);
-            }
-          });
-        });
-      }
+      const getUserName = async () => {
+        try {
+          const querySnapshot = await getDocs(query(collection(db, 'users'), where('currentUserEmail', '==', currentUser.email)));
+          if (!querySnapshot.empty) {
+            const doc = querySnapshot.docs[0];
+            const userName = doc.data().userName;
+            const userEmail = doc.data().currentUserEmail;
+            setCurrentUserName(userName);
+            setCurrentUserEmail(userEmail);
+          } 
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      getUserName();
     } else if (externalUserOnOff) {
       const auth = getAuth(app);
       const currentUser = auth.currentUser;
@@ -45,10 +49,12 @@ const UserDropDownMenu = ({ userOnOff, setUserOnOff, setExternalUserOnOff, exter
       <ProfilePic  currentUserEmail={currentUserEmail} />
       <NavDropdown title={currentUserName} id="nav-dropdown-dark-example">
         <NavDropdown.Item>Notes</NavDropdown.Item>
-        <NavDropdown.Item>Map</NavDropdown.Item>
+        <NavDropdown.Item>
+            <NavLink style={{color: 'black'}} to="/googlemaps">Map</NavLink>
+        </NavDropdown.Item>
         {externalUserOnOff === false ? (
           <NavDropdown.Item>
-            <NavLink to="/changepassword">Change Password</NavLink>
+            <NavLink style={{color: 'black'}} to="/changepassword">Change Password</NavLink>
           </NavDropdown.Item>
         ) : null}
         <SignOut setUserOnOff={setUserOnOff} setExternalUserOnOff={setExternalUserOnOff} />

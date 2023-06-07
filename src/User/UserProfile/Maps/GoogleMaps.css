@@ -1,0 +1,63 @@
+.user-map {
+  min-height: 200vh; 
+  background-color: #ECFFFF ;
+  padding-top: 0,1%; /* spațiu suplimentar deasupra cardului */
+  
+}
+
+.card-options {
+  max-width: 932px;
+  margin: auto; 
+  height: 200px;
+  border: 4px solid rgb(0, 0, 0); /* adăugarea unei margini */
+  border-radius: 10px; /* border-radius pentru margini rotunjite */
+}
+
+.origin-text {
+  width: 300px;
+  margin-left: 2%;
+  margin-top: 12%;
+}
+
+.destination-text {
+  width: 300px;
+  margin-left: 7%;
+}
+
+.autocomplete-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.travel-mode {
+  display: flex;
+  align-items: center;
+  margin-left: 1%;
+}
+
+.route-button {
+  width: 140px;
+}
+
+.clear-route-btn {
+  width: 140px;
+  background-color: blueviolet;
+}
+
+.form-select {
+  background-color: green;
+  color: white;
+  width: 150px;
+}
+
+.distance-duration-text{
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.start-point-container{
+  width: 309px;
+}

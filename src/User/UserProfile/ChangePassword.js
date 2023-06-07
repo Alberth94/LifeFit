@@ -4,7 +4,6 @@ import { getAuth, updatePassword } from "firebase/auth";
 import { app } from '../../FireBase/FireBase';
 import './ChangePassword.css'
 
-
 const ChangePassword = ({userOnOff}) => {
     const [newPassword, setNewPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);

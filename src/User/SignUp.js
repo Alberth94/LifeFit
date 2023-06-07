@@ -61,14 +61,23 @@ const SignUp = ({ setUserOnOff, setExternalUserOnOff }) => {
       setPasswordMessage('');
   
       const checkIfUsernameExists = async (username) => {
-        const querySnapshot = await getDocs(query(collection(db, 'users'), where('userName', '==', username)));
+        const querySnapshot = await query(collection(db, 'users'), where('userName', '==', username)).get();
+        console.log(querySnapshot);
         if (querySnapshot.empty) {
           console.log('No documents found!');
           return false;
         } else {
-          setUserNameMessage("This username already exists. Please choose another one.");
-          console.log(userNameMessage);
-          return true;
+          const firstDocument = querySnapshot.docs[0];
+          const userData = firstDocument.data();
+          const foundUserName = userData.userName;
+          if (foundUserName === username) {
+            setUserNameMessage("This username already exists. Please choose another one.");
+            console.log(userNameMessage);
+            return true;
+          } else {
+            console.log('Username not found!');
+            return false;
+          }
         }
       };
   

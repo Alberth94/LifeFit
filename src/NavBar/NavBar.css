@@ -4,4 +4,17 @@
 
 .mr-3 {
     margin-right: 50px;
-  }
+}
+
+.navbar {
+    background-color: #758BF6;
+    color: white;
+    font-weight: bolder;
+    font-style: oblique;
+}
+
+.nav-link {
+    color: white;
+    font-size: large;
+    font-style: oblique;
+}
