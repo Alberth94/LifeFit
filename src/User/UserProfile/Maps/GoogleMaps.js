@@ -81,10 +81,10 @@ function GoogleMaps() {
               borderRadius: '10px',
             }}
             options={{
-              zoomControl: false,
-              streetViewControl: false,
-              mapTypeControl: false,
-              fullscreenControl: false,
+              zoomControl: true,
+              streetViewControl: true,
+              mapTypeControl: true,
+              fullscreenControl: true,
             }}
           >
             <Marker position={center} />
