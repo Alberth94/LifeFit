@@ -2,7 +2,7 @@ import React from 'react';
 import { GoogleMap, Marker, DirectionsRenderer } from '@react-google-maps/api';
 import './Map.css';
 
-const center = { lat: 48.8584, lng: 2.2945 };
+const center = { lat: 46.19672470664373, lng: 24.720774861113764 };//Romania
 
 const Map = ({directionsResponse}) => {
     
