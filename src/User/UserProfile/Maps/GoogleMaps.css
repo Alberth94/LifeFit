@@ -1,7 +1,7 @@
 .user-map {
   min-height: 200vh; 
   background-color: #ECFFFF ;
-  padding-top: 0,1%; /* spațiu suplimentar deasupra cardului */
+  padding-top: 0,1%;
   
 }
 
@@ -9,8 +9,8 @@
   max-width: 932px;
   margin: auto; 
   height: 200px;
-  border: 4px solid rgb(0, 0, 0); /* adăugarea unei margini */
-  border-radius: 10px; /* border-radius pentru margini rotunjite */
+  border: 4px solid rgb(0, 0, 0); 
+  border-radius: 10px; 
 }
 
 .origin-text {
@@ -34,15 +34,6 @@
   display: flex;
   align-items: center;
   margin-left: 1%;
-}
-
-.route-button {
-  width: 140px;
-}
-
-.clear-route-btn {
-  width: 140px;
-  background-color: blueviolet;
 }
 
 .form-select {

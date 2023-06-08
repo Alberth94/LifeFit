@@ -1,15 +1,15 @@
 import React, { useState, useRef } from "react";
 import { SkeletonText } from '@chakra-ui/react';
 import {Form, ButtonGroup, Card } from 'react-bootstrap';
-import { useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer } from '@react-google-maps/api';
+import { useJsApiLoader, Autocomplete } from '@react-google-maps/api';
 import UserPosition from './UserPosition';
 import TravelMode from './TravelMode';
 import Intro from './Intro';
 import './GoogleMaps.css';
 import CalculateRoute from "./CalculateRoute";
 import ClearRoute from './ClearRoute';
+import Map from './Map';
 
-const center = { lat: 48.8584, lng: 2.2945 };
 const libraries =['places'];
 
 function GoogleMaps() {
@@ -24,7 +24,6 @@ function GoogleMaps() {
   const [duration, setDuration] = useState('');
 
   const originRef = useRef();
-  console.log(originRef);
   const destiantionRef = useRef();
 
   if (!isLoaded) {
@@ -45,30 +44,7 @@ function GoogleMaps() {
             width: '90%',
           }}
         >
-          {/* Google Map Box */}
-          <GoogleMap
-            center={center}
-            zoom={15}
-            mapContainerStyle={{
-              width: '90%',
-              height: '90%',
-              marginLeft: '10%',
-              marginTop: '100%',
-              border: '4px solid rgb(0, 0, 0)',
-              borderRadius: '10px',
-            }}
-            options={{
-              zoomControl: true,
-              streetViewControl: true,
-              mapTypeControl: true,
-              fullscreenControl: true,
-            }}
-          >
-            <Marker position={center} />
-            {directionsResponse && (
-              <DirectionsRenderer directions={directionsResponse} />
-            )}
-          </GoogleMap>
+          <Map directionsResponse={directionsResponse}></Map>
         </div>
 
         <Card className='card-options'>
@@ -95,14 +71,13 @@ function GoogleMaps() {
             <span style={{ marginLeft: '25px' }}></span>
 
             <ButtonGroup>
-            <CalculateRoute setDirectionsResponse={setDirectionsResponse} selectedMode={selectedMode} originRef={originRef} destiantionRef={destiantionRef} setDuration={setDuration} setDistance={setDistance} ></CalculateRoute>
+              <CalculateRoute setDirectionsResponse={setDirectionsResponse} selectedMode={selectedMode} originRef={originRef} destiantionRef={destiantionRef} setDuration={setDuration} setDistance={setDistance} ></CalculateRoute>
               <span style={{ marginLeft: '10px' }}></span>
               <ClearRoute  setDirectionsResponse={setDirectionsResponse} originRef={originRef} destiantionRef={destiantionRef} setDuration={setDuration} setDistance={setDistance}></ClearRoute>
             </ButtonGroup>
           </div>
           <div className='travel-mode'>
             <TravelMode setSelectedMode={setSelectedMode} />
-
             <div className='distance-duration-text'>
               <p style={{ fontSize: '20px' }}>Distance: {distance}</p>
               <p style={{ fontSize: '20px', marginLeft: '30%' }}>Duration: {duration}</p>
