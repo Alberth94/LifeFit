@@ -12,7 +12,6 @@ const Intro = () => {
         <span style={{width: '10px'}}></span>
         <img className="maps-img" src={Fitness} alt="Fitness" />
         <span style={{width: '10px'}}></span>
-
         <img className="maps-img" src={Meditation} alt="Meditation" />
       </div>
       <div className="text">

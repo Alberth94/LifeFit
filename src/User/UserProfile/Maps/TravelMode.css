@@ -1,3 +1,6 @@
-.form-select{
-    margin-left: 80%;
-}
+
+.form-select {
+    background-color: green;
+    color: white;
+    width: 150px;
+  }

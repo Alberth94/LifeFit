@@ -22,14 +22,9 @@ const CalculateRoute = (props) => {
       }
 
     return (
-        <Button
-        className='route-button small-button'
-        variant='success'
-        type='submit'
-        onClick={calculateRoute}
-      >
-        Calculate Route
-      </Button>
+        <Button className='route-button small-button' variant='success' type='submit' onClick={calculateRoute}>
+            Calculate Route
+        </Button>
     );
 }
 

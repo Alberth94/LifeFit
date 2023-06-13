@@ -14,8 +14,8 @@ const Map = ({directionsResponse}) => {
             mapContainerStyle={{
             width: '90%',
             height: '90%',
-            marginLeft: '10%',
-            marginTop: '100%',
+            marginLeft: '5%',
+            marginTop: '14%',
             border: '4px solid rgb(0, 0, 0)',
             borderRadius: '10px',
             }}
@@ -27,8 +27,8 @@ const Map = ({directionsResponse}) => {
             }}
             >
             <Marker position={center} />
-                {directionsResponse && (
-            <DirectionsRenderer directions={directionsResponse} />
+            {directionsResponse && (
+                <DirectionsRenderer directions={directionsResponse} />
             )}
         </GoogleMap>
       </div>
